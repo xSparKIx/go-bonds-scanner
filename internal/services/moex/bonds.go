@@ -16,24 +16,22 @@ type GetBondsResponse struct {
 
 // Структура списка облигаций
 type BondsList struct {
-	Metadata map[string]any  `json:"metadata"`
-	Columns  []string        `json:"columns"`
-	Data     [][]interface{} `json:"data"`
+	Metadata map[string]any `json:"metadata"`
+	Columns  []string       `json:"columns"`
+	Data     [][]any        `json:"data"`
 }
 
 // Структура информации о рынке ценных бумаг
-// todo: Возможно объединить с BondsList и в целом с ответами, но вообще они различаются в данных
 type BondsMarketData struct {
-	Metadata map[string]any  `json:"metadata"`
-	Columns  []string        `json:"columns"`
-	Data     [][]interface{} `json:"data"`
+	Metadata map[string]any `json:"metadata"`
+	Columns  []string       `json:"columns"`
+	Data     [][]any        `json:"data"`
 }
 
 // Тип облигации
-type Bond = []interface{}
+type Bond = any
 
 // Метод получения полного списка облигаций
-// todo: Попробовать распихать в отдельный горутины
 func GetAllBonds() ([]GetBondsResponse, error) {
 	result := []GetBondsResponse{}
 
